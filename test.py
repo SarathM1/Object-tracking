@@ -20,14 +20,14 @@ while(1):
 			# compute the absolute difference between the current frame and
 			# first frame
 			frameDelta = cv2.absdiff(firstFrame, gray)
-			thresh = cv2.threshold(frameDelta, 25, 255, cv2.THRESH_BINARY)[1]
+			thresh = cv2.threshold(frameDelta, 50, 255, cv2.THRESH_BINARY)[1]
  
 			# dilate the thresholded image to fill in holes, then find contours
 			# on thresholded image
 			thresh = cv2.dilate(thresh, None, iterations=2)
 			(cnts, _) = cv2.findContours(thresh.copy(), cv2.RETR_EXTERNAL,cv2.CHAIN_APPROX_SIMPLE)
 			for c in cnts:
-				if cv2.contourArea(c) < 2000:
+				if cv2.contourArea(c) < 1000:
 					continue
 				# compute the bounding box for the contour, draw it on the frame,
 				# and update the text
@@ -36,8 +36,8 @@ while(1):
 
 			# show the frame and record if the user presses a key
 			cv2.imshow("Security Feed", frame)
-			#cv2.imshow("Thresh", thresh)
-			#cv2.imshow("Frame Delta", frameDelta)
+			cv2.imshow("Thresh", thresh)
+			cv2.imshow("Frame Delta", frameDelta)
 			key = cv2.waitKey(1) & 0xFF
 		 
 			# if the `q` key is pressed, break from the lop
