@@ -18,9 +18,9 @@ cam = cv2.VideoCapture("openCV2.mp4")
 ret,frame = cam.read()
 print ret
 
-frame1 = cv2.cvtColor(cam.read()[1],cv2.COLOR_RGB2GRAY)
-frame2 = cv2.cvtColor(cam.read()[1],cv2.COLOR_RGB2GRAY)
-frame3 = cv2.cvtColor(cam.read()[1],cv2.COLOR_RGB2GRAY)
+frame1 = cv2.cvtColor(cam.read()[1],cv2.COLOR_BGR2GRAY)
+frame2 = cv2.cvtColor(cam.read()[1],cv2.COLOR_BGR2GRAY)
+frame3 = cv2.cvtColor(cam.read()[1],cv2.COLOR_BGR2GRAY)
 
 while True:
 	ret,frame = cam.read()
@@ -45,7 +45,7 @@ while True:
 	
 	frame1 = frame2
 	frame2 = frame3
-	frame3 = cv2.cvtColor(cam.read()[1],cv2.COLOR_RGB2GRAY)
+	frame3 = cv2.cvtColor(cam.read()[1],cv2.COLOR_BGR2GRAY)
 	
 	if cv2.waitKey(0) & 0xFF == ord('q'):	# To move frame by frame
 	#if cv2.waitKey(25) & 0xFF == ord('q'):
