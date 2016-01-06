@@ -40,9 +40,9 @@ while True:
 	t_minus = t
 	t = t_plus
 	t_plus = cv2.cvtColor(cam.read()[1],cv2.COLOR_RGB2GRAY)
-	key = cv2.waitKey(10)
-
-	if cv2.waitKey(1) & 0xFF == ord('q'):
+	
+	if cv2.waitKey(25) & 0xFF == ord('q'):
+		print "Pressed Q, quitting!!"
 		break
 print "GoodBye"
 cam.release()
