@@ -7,9 +7,9 @@ def diffImg(t0,t1,t2):
 	d2 = cv2.absdiff(t1,t0)
 	op = cv2.bitwise_and(d1,d2)
 	
-	cv2.imshow('d1',d1)
-	cv2.imshow('d2',d2)
-	cv2.imshow('op',op)
+	#cv2.imshow('d1',d1)
+	#cv2.imshow('d2',d2)
+	#cv2.imshow('op',op)
 	
 	return op
 
@@ -38,9 +38,9 @@ while True:
 			continue
 		(x,y,w,h)  = cv2.boundingRect(c)
 		cv2.rectangle(frame, (x, y), (x + w, y + h), (0, 255, 0), 2)
-	#cv2.imshow('threshold',thresh)
-	#cv2.imshow('threshold1',thresh1)
-	#cv2.imshow('difference',mov)
+	cv2.imshow('threshold',thresh)
+	cv2.imshow('threshold1',thresh1)
+	cv2.imshow('difference',mov)
 	cv2.imshow('movement',frame)
 	
 	frame1 = frame2
