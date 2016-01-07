@@ -15,8 +15,6 @@ def diffImg(t0,t1,t2):
 
 
 cam = cv2.VideoCapture("openCV2.mp4")
-ret,frame = cam.read()
-print ret
 
 frame1 = cv2.cvtColor(cam.read()[1],cv2.COLOR_BGR2GRAY)
 frame2 = cv2.cvtColor(cam.read()[1],cv2.COLOR_BGR2GRAY)
@@ -32,9 +30,9 @@ while True:
 	mov = diffImg(frame1,frame2,frame3)
 	thresh = cv2.threshold(mov,30,255,cv2.THRESH_BINARY)[1]
 	thresh1 = cv2.dilate(thresh,None,iterations=4)
-	(cnts,_) = cv2.findContours(thresh1.copy(),cv2.RETR_EXTERNAL,cv2.CHAIN_APPROX_SIMPLE)
+	(cnts,_) = cv2.findContours(thresh1.copy(),cv2.RETR_TREE,cv2.CHAIN_APPROX_SIMPLE)
 	for c in cnts:
-		if cv2.contourArea(c)<2000:
+		if cv2.contourArea(c)<1000:
 			continue
 		(x,y,w,h)  = cv2.boundingRect(c)
 		cv2.rectangle(frame, (x, y), (x + w, y + h), (0, 255, 0), 2)
