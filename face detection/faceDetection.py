@@ -4,7 +4,7 @@ import cv2
 faceCascade = cv2.CascadeClassifier('./faces.xml')	# Provide correct path to faces.xml
 
 #to use video file instead of camera
-cap = cv2.VideoCapture('openCV2.mp4')
+cap = cv2.VideoCapture('openCV2.mp4')	#use correct path or puth the video in same folder
 
 #To use live feed from camera
 #cap = cv2.VideoCapture(0)
