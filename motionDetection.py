@@ -40,10 +40,11 @@ while True:
 			continue
 		#print "Detected!!",frameCnt
 		frameCnt+=1
+		
 		if(frameCnt%10 == 0):
-					timeStamp = dt.strftime(dt.now(),'%d/%m/%y %h:%m:%s')
-					#print str(timeStamp)
-					cv2.imwrite('Detected'+str(frameCnt)+'.jpg',frame)
+					timeStamp = dt.strftime(dt.now(),'%d:%m:%y:%H:%M:%S')
+					print str(timeStamp)
+					print cv2.imwrite(str(timeStamp)+'.jpg',frame)
 		(x,y,w,h)  = cv2.boundingRect(c)
 		cv2.rectangle(frame, (x, y), (x + w, y + h), (0, 255, 0), 2)
 	cv2.imshow('threshold',thresh)
