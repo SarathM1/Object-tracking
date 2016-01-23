@@ -1,7 +1,11 @@
 import numpy as np
 import cv2		#importing opencv
 import imutils
+from deleteFiles import deleteFiles
+from datetime import datetime as dt
 
+frameCnt = 0
+deleteFiles()
 def diffImg(t0,t1,t2):
 	d1 = cv2.absdiff(t2,t1)
 	d2 = cv2.absdiff(t1,t0)
@@ -14,7 +18,7 @@ def diffImg(t0,t1,t2):
 	return op
 
 
-cam = cv2.VideoCapture("openCV2.mp4")
+cam = cv2.VideoCapture(0)
 
 frame1 = cv2.cvtColor(cam.read()[1],cv2.COLOR_BGR2GRAY)
 frame2 = cv2.cvtColor(cam.read()[1],cv2.COLOR_BGR2GRAY)
@@ -34,6 +38,12 @@ while True:
 	for c in cnts:
 		if cv2.contourArea(c)<1000:
 			continue
+		#print "Detected!!",frameCnt
+		frameCnt+=1
+		if(frameCnt%10 == 0):
+					timeStamp = dt.strftime(dt.now(),'%d/%m/%y %h:%m:%s')
+					#print str(timeStamp)
+					cv2.imwrite('Detected'+str(frameCnt)+'.jpg',frame)
 		(x,y,w,h)  = cv2.boundingRect(c)
 		cv2.rectangle(frame, (x, y), (x + w, y + h), (0, 255, 0), 2)
 	cv2.imshow('threshold',thresh)
@@ -45,7 +55,7 @@ while True:
 	frame2 = frame3
 	frame3 = cv2.cvtColor(cam.read()[1],cv2.COLOR_BGR2GRAY)
 	
-	if cv2.waitKey(0) & 0xFF == ord('q'):	# To move frame by frame
+	if cv2.waitKey(20) & 0xFF == ord('q'):	# To move frame by frame
 	#if cv2.waitKey(25) & 0xFF == ord('q'):
 		print "Pressed Q, quitting!!"
 		break
