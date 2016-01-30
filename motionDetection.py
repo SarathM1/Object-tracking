@@ -18,7 +18,7 @@ def diffImg(t0,t1,t2):
 	return op
 
 
-cam = cv2.VideoCapture(0)
+cam = cv2.VideoCapture('openCV2.mp4')
 
 frame1 = cv2.cvtColor(cam.read()[1],cv2.COLOR_BGR2GRAY)
 frame2 = cv2.cvtColor(cam.read()[1],cv2.COLOR_BGR2GRAY)
