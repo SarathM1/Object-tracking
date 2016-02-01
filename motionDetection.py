@@ -1,11 +1,8 @@
 import numpy as np
 import cv2		#importing opencv
-import imutils
-from deleteFiles import deleteFiles
 from datetime import datetime as dt
 
 frameCnt = 0
-deleteFiles()
 def diffImg(t0,t1,t2):
 	d1 = cv2.absdiff(t2,t1)
 	d2 = cv2.absdiff(t1,t0)
