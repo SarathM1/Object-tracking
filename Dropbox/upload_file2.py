@@ -7,13 +7,11 @@ client = dropbox.client.DropboxClient(access_token)
 
 while True:
     try:
-        client.account_info()
-        for f in os.listdir('../'):
+        for f in os.listdir('../Detected/'):
             if re.search('.*\.jpg', f):
-                fl = open('../'+f, 'rb')
+                fl = open('../Detected/'+f, 'rb')
                 response = client.put_file('/'+ f, fl)
                 print "uploaded file", response['path'].split('/')[1]
-                os.remove('../'+f)
+                os.remove('../Detected/'+f)
     except Exception, e:
         print e
-    
