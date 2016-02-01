@@ -1,5 +1,5 @@
 import dropbox
-import os,re
+import os,re,time
 
 access_token = 'gMLhtGxtfGAAAAAAAAAACDBrTIGSl3zNtH_TiZVuIl-IdchTWT4HCPXo_Z1s6D3q'
 client = dropbox.client.DropboxClient(access_token)
@@ -14,4 +14,6 @@ while True:
                 print "uploaded file", response['path'].split('/')[1]
                 os.remove('../Detected/'+f)
     except Exception, e:
-        print e
+        print "Error Occured!! Check Connection"
+        time.sleep(5)
+
