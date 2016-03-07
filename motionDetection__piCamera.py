@@ -8,9 +8,9 @@ from datetime import datetime as dt
 
 # initialize the camera and grab a reference to the raw camera capture
 camera = PiCamera()
-camera.resolution = (640, 480)
-camera.framerate = 32
-rawCapture = PiRGBArray(camera, size=(640, 480))
+camera.resolution = (300, 300)
+camera.framerate = 64
+rawCapture = PiRGBArray(camera, size=(300, 300))
 time.sleep(0.1)
 
 frameCnt = 0
